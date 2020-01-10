@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using AmaraCode.CManager.Infrastructure;
 using AmaraCode.CManager.Models;
-using Microsoft.Extensions.DependencyInjection;
+using System.Linq;
 
 namespace AmaraCode.CManager.AppServices
 {
@@ -29,9 +29,15 @@ namespace AmaraCode.CManager.AppServices
         }
 
 
-        public IList<Company> CompanyList()
+        public IEnumerable<Company> CompanyList()
         {
-            return _repo.Companies;
+            var result = from c in _repo.Companies
+                         orderby c.City, c.Phone
+                         select c;
+
+            return result;
+
+                         
         }
 
     }

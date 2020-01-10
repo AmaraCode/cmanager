@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cmanager", "cmanager.csproj", "{61785907-33AE-4BE7-86AF-E1A8CC6BB3F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CManager_Tests", "..\CManager_Tests\CManager_Tests.csproj", "{92D07F28-8513-47ED-A383-9866569BB14D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CManager_Tests", "..\CManager_Tests\CManager_Tests.csproj", "{92D07F28-8513-47ED-A383-9866569BB14D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cmanager_conversion", "..\cmanager_conversion\cmanager_conversion.csproj", "{537C9BA9-1DBB-47A6-B05B-3EB58257E149}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{92D07F28-8513-47ED-A383-9866569BB14D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92D07F28-8513-47ED-A383-9866569BB14D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92D07F28-8513-47ED-A383-9866569BB14D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{537C9BA9-1DBB-47A6-B05B-3EB58257E149}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{537C9BA9-1DBB-47A6-B05B-3EB58257E149}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{537C9BA9-1DBB-47A6-B05B-3EB58257E149}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{537C9BA9-1DBB-47A6-B05B-3EB58257E149}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
