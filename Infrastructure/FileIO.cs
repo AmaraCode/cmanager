@@ -15,8 +15,6 @@ namespace AmaraCode.CManager.Infrastructure
         private string _path;
         
         
-        
-        
         public FileIO(string dataPath)
         {
             _file = typeof(TModel).Name;
@@ -25,15 +23,16 @@ namespace AmaraCode.CManager.Infrastructure
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="collection"></param>
+        /// <returns></returns>
         public bool SaveData(TCollection collection)
         {
-
             bool status = false;
             try
             {
-                
-
                 if (collection != null)
                 {
                     //serialize the collection to JSON
@@ -55,15 +54,18 @@ namespace AmaraCode.CManager.Infrastructure
 
                 throw ex;
             }
-                
-            
             return status;
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="collection"></param>
+        /// <returns></returns>
         public TCollection GetData(TCollection collection)
         {
-
             try
             {
                 if (collection != null)
@@ -84,11 +86,7 @@ namespace AmaraCode.CManager.Infrastructure
 
                 throw ex;
             }
-
             return collection;
-
         }
-
-
     }
 }

@@ -1,0 +1,32 @@
+﻿@model IList<Company>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>List</h1>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Company</th>
+            <th scope="col">Address</th>
+            <th scope="col">City</th>
+            <th scope="col">State</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Website</th>
+        </tr>
+    </thead>
+
+    @foreach(Company company in @Model)
+    {
+        <tr>
+            <td>@company.CompanyName</td>
+            <td>@company.Address</td>
+            <td>@company.City</td>
+            <td>@company.State</td>
+            <td>@company.Phone</td>
+            <td>@company.Website</td>
+        </tr>
+    }
+</table>

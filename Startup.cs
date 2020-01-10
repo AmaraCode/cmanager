@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using AmaraCode.CManager.Infrastructure;
+using AmaraCode.CManager.Models;
+using AmaraCode.CManager.AppServices;
 
 namespace cmanager
 {
@@ -26,8 +28,14 @@ namespace cmanager
         {
             // Add framework services.
             //services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+            services.AddTransient<CompanyAppService, CompanyAppService>();
+            services.AddTransient<ICompanyRepository, CompanyRepository>();
+            
+            
             services.AddControllersWithViews();
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +64,37 @@ namespace cmanager
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            //load the initial data objects
+            InitializeData(env);
+        }
+
+        private void InitializeData(IWebHostEnvironment env)
+        {
+            //create 
+            var repo = new CompanyRepository(env);
+
+            /*
+            string datapath = $@"{env.ContentRootPath}\data";
+            //Load company data
+            try
+            {
+                var cdata = new FileIO<List<Company>, Company>(datapath);
+                DataContext.Companies = cdata.GetData(DataContext.Companies);
+            }
+            catch
+            {}
+
+            //Load conversation data
+            try
+            {
+                var convData = new FileIO<List<Conversation>, Conversation>(datapath);
+                DataContext.Conversations = convData.GetData(DataContext.Conversations);
+
+            }
+            catch
+            { }
+            */
         }
     }
 }

@@ -26,8 +26,15 @@ using AmaraCode.CManager.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\AmaraCode\projects\cmanager\Views\_ViewImports.cshtml"
+using AmaraCode.CManager.Infrastructure;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"25f3ec71ec9e4ab1539a6076591af4711e636cdb", @"/Views/Home/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e43b23082269d44eb9c12df6a229a4cb064dfb1e", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"5a721be636211d2a6394100b5bedefd956b27dc5", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

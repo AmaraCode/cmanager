@@ -1,3 +1,13 @@
-
+@model CompanyIndexViewModel
 
 <h1>This is the Company Index view</h1>
+
+There are @Model.CompanyCount companies.
+@if (Model.CompanyCount > 0)
+{<a asp-action="list">View List</a>}
+
+<br />
+
+There are @Model.ConversationCount conversations.
+@if (Model.ConversationCount > 0)
+{<a asp-controller="conversation" asp-action="list">View List</a>}

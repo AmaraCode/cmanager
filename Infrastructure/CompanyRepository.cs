@@ -1,51 +1,94 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using AmaraCode.CManager.Models;
 using Microsoft.AspNetCore.Hosting;
 
 namespace AmaraCode.CManager.Infrastructure
 {
-    class CompanyRepository
+    public class CompanyRepository : ICompanyRepository
     {
 
-        private List<Company> _companies;
-        private List<Conversation> _conversations;
         private string _path;
+        private static DataContext _context;
+
+        //make the underlying  available for searches
+        public IList<Company> Companies
+        { get
+            { return _context.Companies; }
+        }
+
+        //make the underlying  available for searches
+        public IList<Conversation> Conversations
+        { get
+            { return _context.Conversations; }
+        }
 
 
         public CompanyRepository(IWebHostEnvironment environment)
         {
-            _companies = new List<Company>();
-            _conversations = new List<Conversation>();
-            _path = environment.ContentRootPath;
+            _path = $@"{environment.ContentRootPath}\data";
+            _context = new DataContext();
+            LoadData();
         }
 
 
-        public Company GetCompany(int id)
+        public Company GetCompany(Guid id)
         {
-            throw new NotImplementedException();
-
+            return _context.Companies.Where(x => x.ID == id).FirstOrDefault();
         }
 
         public Company GetCompany(string name)
         {
-            throw new NotImplementedException();
+            return _context.Companies.Where(x => x.CompanyName.ToLower() == name.ToLower()).FirstOrDefault();
         }
 
         public Company SaveCompany(Company company)
         {
-            throw new NotImplementedException();
+            company.ID = Guid.NewGuid();
+            _context.Companies.Add(company);
+
+            return company;
         }
 
-        public Conversation GetConversation(int id)
+        public Conversation GetConversation(Guid id)
         {
-            throw new NotImplementedException();
+            return _context.Conversations.Where(x => x.ID == id).FirstOrDefault();
         }
 
         public Conversation SaveConversation(Conversation conversation)
         {
-            throw new NotImplementedException();
+            conversation.ID = Guid.NewGuid();
+            _context.Conversations.Add(conversation);
+            return conversation;
+
         }
+
+
+        private void LoadData()
+        {
+            try
+            {
+                var c = new FileIO<List<Company>, Company>(_path);
+                _context.Companies = c.GetData(_context.Companies);
+            }
+            catch
+            {
+            }
+
+
+            try
+            {
+                var cv = new FileIO<List<Conversation>, Conversation>(_path);
+                _context.Conversations = cv.GetData(_context.Conversations);
+            }
+            catch
+            {
+            }
+
+        }
+
+
 
     }
 

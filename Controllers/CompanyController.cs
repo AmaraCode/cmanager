@@ -1,12 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using AmaraCode.CManager.Models;
 using AmaraCode.CManager.AppServices;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AmaraCode.CManager.Controllers
 {
@@ -14,17 +8,20 @@ namespace AmaraCode.CManager.Controllers
     {
         CompanyAppService _service;
 
-        public CompanyController()
+        public CompanyController(CompanyAppService cas)
         {
-            _service = new CompanyAppService();
+            _service = cas;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(_service.CompanyIndex());
         }
 
-
+        public IActionResult List()
+        {
+            return View(_service.CompanyList());
+        }
 
     }
 

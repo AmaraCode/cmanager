@@ -7,7 +7,7 @@ namespace AmaraCode.CManager.Models
 {
     public class Company
     {
-        public int ID { get; set; }
+        public Guid ID { get; set; }
         public string CompanyName { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
@@ -16,7 +16,12 @@ namespace AmaraCode.CManager.Models
         public string Phone { get; set; }
         public string Website { get; set; }
         public bool Important { get; set; }
+        public DateTime Created { get; set; }
 
+        public Company()
+        {
+            Created = DateTime.Now;
+        }
     }
 
 
