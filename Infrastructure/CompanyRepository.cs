@@ -1,18 +1,25 @@
 using System;
+using System.Collections.Generic;
 using AmaraCode.CManager.Models;
+using Microsoft.AspNetCore.Hosting;
 
 namespace AmaraCode.CManager.Infrastructure
 {
     class CompanyRepository
     {
 
-        private AppDbContext _db;
+        private List<Company> _companies;
+        private List<Conversation> _conversations;
+        private string _path;
 
-        public CompanyRepository(AppDbContext dbcontext)
+
+        public CompanyRepository(IWebHostEnvironment environment)
         {
-            _db = dbcontext;
-
+            _companies = new List<Company>();
+            _conversations = new List<Conversation>();
+            _path = environment.ContentRootPath;
         }
+
 
         public Company GetCompany(int id)
         {

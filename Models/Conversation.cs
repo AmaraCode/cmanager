@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace AmaraCode.CManager.Models
 {
-    class Conversation
+    public class Conversation
     {
         public int ID { get; set; }
         public string Name { get; set; }

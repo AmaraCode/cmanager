@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AmaraCode.CManager.Models
 {
-    class Company
+    public class Company
     {
         public int ID { get; set; }
         public string CompanyName { get; set; }
@@ -15,7 +15,6 @@ namespace AmaraCode.CManager.Models
         public int Zip { get; set; }
         public string Phone { get; set; }
         public string Website { get; set; }
-        public ICollection<Conversation> Conversations { get; set; }
         public bool Important { get; set; }
 
     }
