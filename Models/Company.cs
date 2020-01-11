@@ -15,8 +15,11 @@ namespace AmaraCode.CManager.Models
         public int Zip { get; set; }
         public string Phone { get; set; }
         public string Website { get; set; }
-        public bool Important { get; set; }
+        public bool Important { get; set; } = false;
         public DateTime Created { get; set; }
+
+        public bool Enabled = true;
+
 
         public Company()
         {

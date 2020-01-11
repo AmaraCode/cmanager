@@ -8,14 +8,14 @@ namespace AmaraCode.CManager.Infrastructure
 {
     public class DataContext
     {
-        public List<Company> Companies { get; set; }
-        public List<Conversation> Conversations { get; set; }
+        public Dictionary<Guid, Company> Companies { get; set; }
+        public Dictionary<Guid, Conversation> Conversations { get; set; }
 
 
         public DataContext()
         {
-            Companies = new List<Company>();
-            Conversations = new List<Conversation>();
+            Companies = new Dictionary<Guid, Company>();
+            Conversations = new Dictionary<Guid, Conversation>();
         }
 
 

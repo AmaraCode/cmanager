@@ -19,8 +19,8 @@ namespace AmaraCode.CManager.AppServices
         public CompanyIndexViewModel CompanyIndex()
         {
             //get conversations
-            var result = (from c in _repo.Companies
-                         join cv in _repo.Conversations
+            var result = (from c in _repo.Companies.Values
+                         join cv in _repo.Conversations.Values
                             on c.ID equals cv.CompanyID
                         orderby cv.Created
                          select (new ConversationCompanyViewModel
@@ -43,9 +43,14 @@ namespace AmaraCode.CManager.AppServices
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Company> CompanyList()
         {
-            var result = from c in _repo.Companies
+            var result = from c in _repo.Companies.Values
                          orderby c.City, c.Phone
                          select c;
 
@@ -54,11 +59,60 @@ namespace AmaraCode.CManager.AppServices
                          
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public Company SaveCompany(Company model)
         {
             return _repo.SaveCompanyAsync(model).Result;
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public CompanyCreateViewModel GetCompany(Guid id)
+        {
+            
+            var company = _repo.GetCompany(id);
+            if (company != null)
+            {
+                var model = new CompanyCreateViewModel
+                {
+                    Address = company.Address,
+                    City = company.City,
+                    CompanyName = company.CompanyName,
+                    Important = company.Important,
+                    Phone = company.Phone,
+                    State = company.State,
+                    Website = company.Website,
+                    Zip = company.Zip
+                };
+
+                return model;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public Company EditCompany(Company model)
+        {
+            return _repo.EditCompanyAsync(model).Result;
+        }
 
     }
 

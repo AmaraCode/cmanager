@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace AmaraCode.CManager.Infrastructure
 {
-    public class FileIO<TCollection, TModel> where TCollection: IList<TModel>
+    public class FileIO<TCollection, TModel> //where TCollection: IList<TModel>
     {
         
         private string _file;

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using AmaraCode.CManager.AppServices;
 using Microsoft.Extensions.DependencyInjection;
 using AmaraCode.CManager.Models;
+using System;
 
 namespace AmaraCode.CManager.Controllers
 {
@@ -36,24 +37,81 @@ namespace AmaraCode.CManager.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(CompanyCreateViewModel model)
         {
-            //do the save stuff here to the App Service
-            var company = new Company
+            if (ModelState.IsValid)
             {
-                Address = model.Address,
-                City = model.City,
-                CompanyName = model.CompanyName,
-                Important = model.Important,
-                Phone = model.Phone,
-                State = model.State,
-                Zip = model.Zip,
-                Website = model.Website
-            };
 
-            _service.SaveCompany(company);
+                //do the save stuff here to the App Service
+                var company = new Company
+                {
+                    Address = model.Address,
+                    City = model.City,
+                    CompanyName = model.CompanyName,
+                    Important = model.Important,
+                    Phone = model.Phone,
+                    State = model.State,
+                    Zip = model.Zip,
+                    Website = model.Website
+                };
 
-            return RedirectToAction("List");
+                _service.SaveCompany(company);
+
+                return RedirectToAction("List");
+            }
+            else
+            {
+                return View(model);
+            }
+        }
+
+
+        [HttpGet]
+        public IActionResult Edit(Guid id)
+        {
+            CompanyCreateViewModel model =_service.GetCompany(id);
+            if (model != null)
+            {
+                return View(model);
+            }
+            else
+            {
+                ModelState.AddModelError("Error", "Error getting company.");
+                return View("List");
+            }
+            
+        }
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public IActionResult Edit(CompanyCreateViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+
+                //do the save stuff here to the App Service
+                var company = new Company
+                {
+                    ID = model.ID,
+                    Address = model.Address,
+                    City = model.City,
+                    CompanyName = model.CompanyName,
+                    Important = model.Important,
+                    Phone = model.Phone,
+                    State = model.State,
+                    Zip = model.Zip,
+                    Website = model.Website
+                };
+
+                _service.EditCompany(company);
+
+                return RedirectToAction("List");
+            }
+            else
+            {
+                return View(model);
+            }
         }
 
     }

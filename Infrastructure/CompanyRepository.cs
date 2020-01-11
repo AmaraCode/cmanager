@@ -15,13 +15,13 @@ namespace AmaraCode.CManager.Infrastructure
         private static DataContext _context;
 
         //make the underlying  available for searches
-        public IList<Company> Companies
+        public IDictionary<Guid, Company> Companies
         { get
             { return _context.Companies; }
         }
 
         //make the underlying  available for searches
-        public IList<Conversation> Conversations
+        public IDictionary<Guid, Conversation> Conversations
         { get
             { return _context.Conversations; }
         }
@@ -37,33 +37,71 @@ namespace AmaraCode.CManager.Infrastructure
 
         public Company GetCompany(Guid id)
         {
-            return _context.Companies.Where(x => x.ID == id).FirstOrDefault();
+            return _context.Companies[id];
         }
 
         public Company GetCompany(string name)
         {
-            return _context.Companies.Where(x => x.CompanyName.ToLower() == name.ToLower()).FirstOrDefault();
+            var x = _context.Companies.Where(x => x.Value.CompanyName.ToLower() == name.ToLower()).FirstOrDefault();
+            return x.Value;
         }
 
         public async Task<Company> SaveCompanyAsync(Company company)
         {
             company.ID = Guid.NewGuid();
-            _context.Companies.Add(company);
+            _context.Companies.Add(company.ID, company);
 
             var x = await SaveCompanyFile();
 
             return company;
         }
 
-        public Conversation GetConversation(Guid id)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="company"></param>
+        /// <returns></returns>
+        public async Task<Company> EditCompanyAsync(Company company)
         {
-            return _context.Conversations.Where(x => x.ID == id).FirstOrDefault();
+            try
+            {
+
+                _context.Companies[company.ID] = company;
+                
+
+                var x = await SaveCompanyFile();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return company;
+            
+
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Conversation GetConversation(Guid id)
+        {
+            return _context.Conversations[id];
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="conversation"></param>
+        /// <returns></returns>
         public async Task<Conversation> SaveConversationAsync(Conversation conversation)
         {
             conversation.ID = Guid.NewGuid();
-            _context.Conversations.Add(conversation);
+            _context.Conversations.Add(conversation.ID, conversation);
 
             var x = await SaveConversationFile();
 
@@ -80,11 +118,12 @@ namespace AmaraCode.CManager.Infrastructure
             bool result = false;
             try
             {
-                var c = new FileIO<List<Company>, Company>(_path);
+                var c = new FileIO<Dictionary<Guid, Company>, Company>(_path);
                 result = c.SaveData(_context.Companies);
             }
-            catch
+            catch(Exception ex)
             {
+                throw ex;
             }
 
             return Task.FromResult(result); 
@@ -100,11 +139,12 @@ namespace AmaraCode.CManager.Infrastructure
             bool result = false;
             try
             {
-                var c = new FileIO<List<Conversation>, Conversation>(_path);
+                var c = new FileIO<Dictionary<Guid, Conversation>, Conversation>(_path);
                 result = c.SaveData(_context.Conversations);
             }
-            catch
+            catch(Exception ex)
             {
+                throw ex;
             }
 
             return Task.FromResult(result);
@@ -117,7 +157,7 @@ namespace AmaraCode.CManager.Infrastructure
         {
             try
             {
-                var c = new FileIO<List<Company>, Company>(_path);
+                var c = new FileIO<Dictionary<Guid, Company>, Company>(_path);
                 _context.Companies = c.GetData(_context.Companies);
             }
             catch
@@ -127,7 +167,7 @@ namespace AmaraCode.CManager.Infrastructure
 
             try
             {
-                var cv = new FileIO<List<Conversation>, Conversation>(_path);
+                var cv = new FileIO<Dictionary<Guid, Conversation>, Conversation>(_path);
                 _context.Conversations = cv.GetData(_context.Conversations);
             }
             catch
