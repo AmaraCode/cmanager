@@ -1,6 +1,7 @@
 ﻿using AmaraCode.CManager.Models;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AmaraCode.CManager.Infrastructure
 {
@@ -11,7 +12,7 @@ namespace AmaraCode.CManager.Infrastructure
         Company GetCompany(Guid id);
         Company GetCompany(string name);
         Conversation GetConversation(Guid id);
-        Company SaveCompany(Company company);
-        Conversation SaveConversation(Conversation conversation);
+        Task<Company> SaveCompanyAsync(Company company);
+        Task<Conversation> SaveConversationAsync(Conversation conversation);
     }
 }

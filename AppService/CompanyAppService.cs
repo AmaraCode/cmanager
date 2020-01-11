@@ -54,6 +54,12 @@ namespace AmaraCode.CManager.AppServices
                          
         }
 
+        public Company SaveCompany(Company model)
+        {
+            return _repo.SaveCompanyAsync(model).Result;
+        }
+
+
     }
 
 }

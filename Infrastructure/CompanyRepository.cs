@@ -3,6 +3,8 @@ using System.Linq;
 using System.Collections.Generic;
 using AmaraCode.CManager.Models;
 using Microsoft.AspNetCore.Hosting;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace AmaraCode.CManager.Infrastructure
 {
@@ -43,10 +45,12 @@ namespace AmaraCode.CManager.Infrastructure
             return _context.Companies.Where(x => x.CompanyName.ToLower() == name.ToLower()).FirstOrDefault();
         }
 
-        public Company SaveCompany(Company company)
+        public async Task<Company> SaveCompanyAsync(Company company)
         {
             company.ID = Guid.NewGuid();
             _context.Companies.Add(company);
+
+            var x = await SaveCompanyFile();
 
             return company;
         }
@@ -56,15 +60,59 @@ namespace AmaraCode.CManager.Infrastructure
             return _context.Conversations.Where(x => x.ID == id).FirstOrDefault();
         }
 
-        public Conversation SaveConversation(Conversation conversation)
+        public async Task<Conversation> SaveConversationAsync(Conversation conversation)
         {
             conversation.ID = Guid.NewGuid();
             _context.Conversations.Add(conversation);
+
+            var x = await SaveConversationFile();
+
             return conversation;
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private Task<bool> SaveCompanyFile()
+        {
+            bool result = false;
+            try
+            {
+                var c = new FileIO<List<Company>, Company>(_path);
+                result = c.SaveData(_context.Companies);
+            }
+            catch
+            {
+            }
 
+            return Task.FromResult(result); 
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private Task<bool> SaveConversationFile()
+        {
+            bool result = false;
+            try
+            {
+                var c = new FileIO<List<Conversation>, Conversation>(_path);
+                result = c.SaveData(_context.Conversations);
+            }
+            catch
+            {
+            }
+
+            return Task.FromResult(result);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void LoadData()
         {
             try
