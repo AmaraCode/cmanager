@@ -46,6 +46,12 @@ namespace AmaraCode.CManager.Infrastructure
             return x.Value;
         }
 
+        public void DeleteCompany(Guid id)
+        {
+            _context.Companies[id].Enabled = false;
+            SaveCompanyFile();
+        }
+
         public async Task<Company> SaveCompanyAsync(Company company)
         {
             company.ID = Guid.NewGuid();

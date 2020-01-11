@@ -1,0 +1,15 @@
+﻿@model CompanyCreateViewModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete Company Warning</h1>
+<br />
+You must confirm by pressing the button below,else cancel.
+<br />
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" name="id" value="@Model.ID" />
+    <button class="btn btn-danger" type="submit">Delete Company</button>
+</form>
+
+<button class="btn btn-primary" asp-action="List">Cancel</button>

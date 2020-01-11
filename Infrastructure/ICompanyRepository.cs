@@ -15,5 +15,7 @@ namespace AmaraCode.CManager.Infrastructure
         Task<Company> SaveCompanyAsync(Company company);
         Task<Conversation> SaveConversationAsync(Conversation conversation);
         Task<Company> EditCompanyAsync(Company company);
+        void DeleteCompany(Guid id);
+
     }
 }

@@ -51,6 +51,7 @@ namespace AmaraCode.CManager.AppServices
         public IEnumerable<Company> CompanyList()
         {
             var result = from c in _repo.Companies.Values
+                         where c.Enabled == true
                          orderby c.City, c.Phone
                          select c;
 
@@ -71,6 +72,12 @@ namespace AmaraCode.CManager.AppServices
         }
 
 
+        public void DeleteCompany(Guid id)
+        {
+            _repo.DeleteCompany(id);
+        }
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -84,6 +91,7 @@ namespace AmaraCode.CManager.AppServices
             {
                 var model = new CompanyCreateViewModel
                 {
+                    ID = company.ID,
                     Address = company.Address,
                     City = company.City,
                     CompanyName = company.CompanyName,

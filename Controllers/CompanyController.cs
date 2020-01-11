@@ -10,32 +10,56 @@ namespace AmaraCode.CManager.Controllers
     {
         CompanyAppService _service;
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cas"></param>
         public CompanyController(CompanyAppService cas)
         {
             _service = cas;
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Index()
         {
             return View(_service.CompanyIndex());
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult List()
         {
-
             return View(_service.CompanyList());
         }
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Create()
         {
             // create empty object and send to view
-            return View( new CompanyCreateViewModel());
+            return View(new CompanyCreateViewModel());
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(CompanyCreateViewModel model)
@@ -67,10 +91,15 @@ namespace AmaraCode.CManager.Controllers
         }
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Edit(Guid id)
         {
-            CompanyCreateViewModel model =_service.GetCompany(id);
+            CompanyCreateViewModel model = _service.GetCompany(id);
             if (model != null)
             {
                 return View(model);
@@ -80,9 +109,15 @@ namespace AmaraCode.CManager.Controllers
                 ModelState.AddModelError("Error", "Error getting company.");
                 return View("List");
             }
-            
+
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [AutoValidateAntiforgeryToken]
         public IActionResult Edit(CompanyCreateViewModel model)
@@ -114,6 +149,29 @@ namespace AmaraCode.CManager.Controllers
             }
         }
 
+
+        [HttpGet]
+        public IActionResult Delete(Guid id)
+        {
+            var model = _service.GetCompany(id);
+            if (model != null)
+            {
+                return View(model);
+            }
+            else
+            {
+                return View("List");
+            }
+        }
+
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public IActionResult DeleteConfirmed (Guid id)
+        {
+            _service.DeleteCompany(id);
+            return RedirectToAction("List");
+        }
     }
 
 }
