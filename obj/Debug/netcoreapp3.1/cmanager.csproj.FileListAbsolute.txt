@@ -118,3 +118,4 @@ C:\AmaraCode\projects\cmanager\obj\Debug\netcoreapp3.1\Razor\Views\Company\List.
 C:\AmaraCode\projects\cmanager\bin\Debug\netcoreapp3.1\Data\initial_company.json
 C:\AmaraCode\projects\cmanager\bin\Debug\netcoreapp3.1\Data\backup_Company.json
 C:\AmaraCode\projects\cmanager\bin\Debug\netcoreapp3.1\Data\Company.json
+C:\AmaraCode\projects\cmanager\bin\Debug\netcoreapp3.1\Data\Conversation.json

@@ -5,8 +5,7 @@
 }
 
 <h1>All Companies</h1>
-<a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
-<a tabindex="0" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
+<a class="btn btn-warning btn-sm" asp-action="create">Create New Company</a>
 
 <table class="table table-striped table-hover table-sm">
     <thead class="thead-dark">
@@ -15,16 +14,21 @@
             <th scope="col">City</th>
             <th scope="col">Phone</th>
             <th scope="col">Website</th>
+            <th scope="col"></th>
         </tr>
     </thead>
 
     @foreach(Company company in @Model)
     {
         <tr>
-            <td>@company.CompanyName</td>
+            <td nowrap>@company.CompanyName</td>
             <td><a tabindex="0" data-toggle="popover" title="Address" data-content="@company.Address, @company.City, @company.State, @company.Zip">@company.City</a></td>
-            <td>@company.Phone</td>
-            <td>@company.Website</td>
+            <td nowrap><a href="skype:@company.Phone?call">@company.Phone</a></td>
+            <td><a href="http://@company.Website" target="_blank">@company.Website</a></td>
+            <td nowrap>
+                <a class="btn btn-primary btn-sm" asp-route-id="@company.ID" asp-action="conversations">Conversations</a>
+                <a class="btn btn-danger btn-sm" asp-route-id="@company.ID" asp-action="remove">Remove</a>
+            </td>
         </tr>
     }
 </table>

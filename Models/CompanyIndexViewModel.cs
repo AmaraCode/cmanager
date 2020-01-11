@@ -9,6 +9,7 @@ namespace AmaraCode.CManager.Models
     {
         public int CompanyCount { get; set; }
         public int ConversationCount { get; set; }
+        public IEnumerable<ConversationCompanyViewModel> LatestConversations { get; set; }
 
     }
 }

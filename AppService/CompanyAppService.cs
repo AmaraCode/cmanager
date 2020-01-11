@@ -18,10 +18,24 @@ namespace AmaraCode.CManager.AppServices
 
         public CompanyIndexViewModel CompanyIndex()
         {
-            var model = new CompanyIndexViewModel
+            //get conversations
+            var result = (from c in _repo.Companies
+                         join cv in _repo.Conversations
+                            on c.ID equals cv.CompanyID
+                        orderby cv.Created
+                         select (new ConversationCompanyViewModel
+                         {
+                             Company = c,
+                             Conversation = cv
+                         })).Take(15);
+
+
+             var model = new CompanyIndexViewModel
             {
                 CompanyCount = _repo.Companies.Count,
-                ConversationCount = _repo.Conversations.Count
+                ConversationCount = _repo.Conversations.Count,
+                LatestConversations = result
+                
             };
 
             return model;
