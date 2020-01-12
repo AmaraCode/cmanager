@@ -5,11 +5,12 @@ using System.Threading.Tasks;
 
 namespace AmaraCode.CManager.Models
 {
-    public class CompanyIndexViewModel
+    public class HomeIndexViewModel
     {
         public int CompanyCount { get; set; }
         public int ConversationCount { get; set; }
         public IEnumerable<ConversationCompanyViewModel> LatestConversations { get; set; }
+        public IEnumerable<ConversationCompanyViewModel> WaitingCallBack { get; set; }
 
     }
 }

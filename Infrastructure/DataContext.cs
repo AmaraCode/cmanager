@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 
 namespace AmaraCode.CManager.Infrastructure
 {
-    public class DataContext
+    public static class DataContext
     {
-        public Dictionary<Guid, Company> Companies { get; set; }
-        public Dictionary<Guid, Conversation> Conversations { get; set; }
+        public static Dictionary<Guid, Company> Companies { get; set; }
+        public static Dictionary<Guid, Conversation> Conversations { get; set; }
+        public static string Path { get; set; }  //make sure to set this early in the pipeline (startup)
 
 
-        public DataContext()
+
+
+        static DataContext()
         {
             Companies = new Dictionary<Guid, Company>();
             Conversations = new Dictionary<Guid, Conversation>();

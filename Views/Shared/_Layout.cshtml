@@ -6,6 +6,8 @@
     <title>@ViewData["Title"] - cmanager</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    
+
 </head>
 <body>
     <header>
@@ -24,6 +26,10 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="company" asp-action="Index">Companies</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="conversation" asp-action="list">Conversations</a>
+                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -31,6 +37,10 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            @if (TempData["message"] != null)
+            {
+                <div class="alert alert-success">@TempData["message"]</div>
+            }
             @RenderBody()
         </main>
     </div>
@@ -48,6 +58,7 @@
             $('[data-toggle="popover"]').popover();
         });
     </script>
+    <script src="https://kit.fontawesome.com/dee63591d0.js" crossorigin="anonymous"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

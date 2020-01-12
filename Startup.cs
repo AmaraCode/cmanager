@@ -10,7 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using AmaraCode.CManager.Infrastructure;
 using AmaraCode.CManager.Models;
-using AmaraCode.CManager.AppServices;
+using AmaraCode.CManager.AppService;
 
 namespace cmanager
 {
@@ -29,7 +29,11 @@ namespace cmanager
             // Add framework services.
             //services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<CompanyAppService, CompanyAppService>();
+            services.AddTransient<ConversationAppService, ConversationAppService>();
+            services.AddTransient<HomeAppService, HomeAppService>();
+
             services.AddTransient<ICompanyRepository, CompanyRepository>();
+            services.AddTransient<IConversationRepository, ConversationRepository>();
             
             
             services.AddControllersWithViews();
@@ -69,32 +73,32 @@ namespace cmanager
             InitializeData(env);
         }
 
+
+
         private void InitializeData(IWebHostEnvironment env)
         {
-            //create 
-            var repo = new CompanyRepository(env);
+            DataContext.Path = $@"{env.ContentRootPath}\data";
 
-            /*
-            string datapath = $@"{env.ContentRootPath}\data";
-            //Load company data
+            //load company data
             try
             {
-                var cdata = new FileIO<List<Company>, Company>(datapath);
-                DataContext.Companies = cdata.GetData(DataContext.Companies);
+                var c = new FileIO<Dictionary<Guid, Company>, Company>(DataContext.Path);
+                DataContext.Companies = c.GetData(DataContext.Companies);
             }
             catch
-            {}
+            {
+            }
 
-            //Load conversation data
+
+            //load conversation data
             try
             {
-                var convData = new FileIO<List<Conversation>, Conversation>(datapath);
-                DataContext.Conversations = convData.GetData(DataContext.Conversations);
-
+                var cv = new FileIO<Dictionary<Guid, Conversation>, Conversation>(DataContext.Path);
+                DataContext.Conversations = cv.GetData(DataContext.Conversations);
             }
             catch
-            { }
-            */
+            {
+            }
         }
     }
 }

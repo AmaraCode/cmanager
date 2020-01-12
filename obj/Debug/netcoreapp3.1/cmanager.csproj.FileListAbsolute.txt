@@ -115,10 +115,12 @@ C:\AmaraCode\projects\cmanager\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAna
 C:\AmaraCode\projects\cmanager\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\AmaraCode\projects\cmanager\obj\Debug\netcoreapp3.1\AmaraCode.CManager.MvcApplicationPartsAssemblyInfo.cache
 C:\AmaraCode\projects\cmanager\obj\Debug\netcoreapp3.1\Razor\Views\Company\List.cshtml.g.cs
-C:\AmaraCode\projects\cmanager\bin\Debug\netcoreapp3.1\Data\initial_company.json
 C:\AmaraCode\projects\cmanager\bin\Debug\netcoreapp3.1\Data\Company.json
 C:\AmaraCode\projects\cmanager\obj\Debug\netcoreapp3.1\Razor\Views\Company\Create.cshtml.g.cs
 C:\AmaraCode\projects\cmanager\obj\Debug\netcoreapp3.1\Razor\Views\Company\Edit.cshtml.g.cs
 C:\AmaraCode\projects\cmanager\bin\Debug\netcoreapp3.1\Data\Company - Copy.json
 C:\AmaraCode\projects\cmanager\bin\Debug\netcoreapp3.1\Data\Conversation.json
 C:\AmaraCode\projects\cmanager\obj\Debug\netcoreapp3.1\Razor\Views\Company\Delete.cshtml.g.cs
+C:\AmaraCode\projects\cmanager\obj\Debug\netcoreapp3.1\Razor\Views\Conversation\List.cshtml.g.cs
+C:\AmaraCode\projects\cmanager\bin\Debug\netcoreapp3.1\Data\Conversation - Copy.json
+C:\AmaraCode\projects\cmanager\obj\Debug\netcoreapp3.1\Razor\Views\Conversation\Edit.cshtml.g.cs

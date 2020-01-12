@@ -6,28 +6,57 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using AmaraCode.CManager.Models;
+using AmaraCode.CManager.AppService;
 
 namespace cmanager.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private HomeAppService _serivce; 
 
-        public HomeController(ILogger<HomeController> logger)
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="homeAppService"></param>
+        public HomeController(ILogger<HomeController> logger, HomeAppService homeAppService)
         {
             _logger = logger;
+            _serivce = homeAppService;
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Index()
         {
-            return View();
+            var result = _serivce.HomeIndex();
+            return View(result);
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Privacy()
         {
             return View();
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

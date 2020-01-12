@@ -1,11 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
-using AmaraCode.CManager.AppServices;
+using AmaraCode.CManager.AppService;
 using Microsoft.Extensions.DependencyInjection;
 using AmaraCode.CManager.Models;
 using System;
 
 namespace AmaraCode.CManager.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class CompanyController : Controller
     {
         CompanyAppService _service;
@@ -39,7 +42,7 @@ namespace AmaraCode.CManager.Controllers
         [HttpGet]
         public IActionResult List()
         {
-            return View(_service.CompanyList());
+            return View(_service.CompanyIndex());
         }
 
 
@@ -82,10 +85,12 @@ namespace AmaraCode.CManager.Controllers
 
                 _service.SaveCompany(company);
 
+                TempData["message"] = "Company Created";
                 return RedirectToAction("List");
             }
             else
             {
+                TempData["message"] = "Error Creating Company";
                 return View(model);
             }
         }
@@ -141,6 +146,7 @@ namespace AmaraCode.CManager.Controllers
 
                 _service.EditCompany(company);
 
+                TempData["message"] = "Company Edited";
                 return RedirectToAction("List");
             }
             else
@@ -150,6 +156,12 @@ namespace AmaraCode.CManager.Controllers
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Delete(Guid id)
         {
@@ -165,10 +177,17 @@ namespace AmaraCode.CManager.Controllers
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost]
         [AutoValidateAntiforgeryToken]
         public IActionResult DeleteConfirmed (Guid id)
         {
+            TempData["message"] = "Company Removed";
             _service.DeleteCompany(id);
             return RedirectToAction("List");
         }
