@@ -29,9 +29,11 @@ namespace AmaraCode.CManager.Infrastructure
         /// 
         /// </summary>
         /// <param name="id"></param>
-        public void DeleteConversation(Guid id)
+        public async void DeleteConversationAsync(Guid id)
         {
-            throw new NotImplementedException();
+            DataContext.Conversations.Remove(id);
+            var x = await SaveConversationFile();
+
         }
 
 
@@ -75,6 +77,7 @@ namespace AmaraCode.CManager.Infrastructure
         public async Task<Conversation> SaveConversationAsync(Conversation conversation)
         {
             conversation.ID = Guid.NewGuid();
+            conversation.Created = DateTime.Now;
             DataContext.Conversations.Add(conversation.ID, conversation);
 
             var x = await SaveConversationFile();

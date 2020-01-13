@@ -31,6 +31,7 @@ namespace cmanager
             services.AddTransient<CompanyAppService, CompanyAppService>();
             services.AddTransient<ConversationAppService, ConversationAppService>();
             services.AddTransient<HomeAppService, HomeAppService>();
+            services.AddTransient<PersonAppService, PersonAppService>();
 
             services.AddTransient<ICompanyRepository, CompanyRepository>();
             services.AddTransient<IConversationRepository, ConversationRepository>();
@@ -64,9 +65,7 @@ namespace cmanager
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
 
             //load the initial data objects

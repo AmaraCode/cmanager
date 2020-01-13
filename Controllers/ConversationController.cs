@@ -12,6 +12,8 @@ namespace AmaraCode.CManager.Controllers
     /// This controller uses the ConversationAppService to keep the controller thin.  The AppService
     /// is injected using DI into the constructor.  
     /// </summary>
+
+    
     public class ConversationController : Controller
     {
         //for direct access to the AppService
@@ -32,11 +34,59 @@ namespace AmaraCode.CManager.Controllers
         /// 
         /// </summary>
         /// <returns></returns>
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
 
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            var model = new ConversationCreateViewModel();
+            return View(model);
+        }
+
+
+
+        [HttpGet]
+        public IActionResult CreateForCompany(ConversationCreateViewModel model)
+        {
+            ConversationCreateViewModel result =  _service.Create(model.CompanyID);
+            return View("create", result);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(ConversationCreateViewModel model)
+        {
+            var result = _service.Create(model);
+            return Redirect(model.ReturnUrl);
+        }
+
+
+        [HttpGet]
+        public IActionResult CreateFromExisting(ConversationCreateViewModel model)
+        {
+            //take the conversationID and find the existing converstation,
+            //copy all the person information and start a new conversation
+
+            //ConversationCreateViewModel result = _service.CreateFromExisting(model.ID);
+            //result.ReturnURL = model.ReturnUrl;
+
+            return View("Create", model);
+
+        }
+
+
+        [HttpPost]
+        public IActionResult Delete(Guid id, string returnUrl)
+        {
+            _service.Delete(id);
+            TempData["message"] = "Conversation Deleted";
+            return Redirect(returnUrl);
+        }
 
 
         /// <summary>
@@ -62,7 +112,6 @@ namespace AmaraCode.CManager.Controllers
         {
             ConversationsViewModel result = _service.GetConversations(id);
             return View("List", result);
-
         }
 
 
@@ -73,7 +122,7 @@ namespace AmaraCode.CManager.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpGet]
-        public IActionResult Edit(ConversationEditViewModel model)
+        public IActionResult Edit( ConversationEditViewModel model)
         {
 
             //call the GetConversation method to get the conversation along with the 
@@ -115,12 +164,10 @@ namespace AmaraCode.CManager.Controllers
         {
             
             var result = _service.EditConversation(model);
+            
             TempData["message"] = "Conversation Edited";
-
-
+            
             return Redirect(model.ReturnURL);
-
-
         }
     }
 }

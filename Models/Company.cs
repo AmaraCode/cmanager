@@ -12,13 +12,14 @@ namespace AmaraCode.CManager.Models
         public string Address { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        public int Zip { get; set; }
+        public string Zip { get; set; }
         public string Phone { get; set; }
         public string Website { get; set; }
         public bool Important { get; set; } = false;
         public DateTime Created { get; set; }
+        public bool Enabled { get; set; } = true;
+        public bool OutOfBusiness { get; set; } = false;
 
-        public bool Enabled = true;
 
 
         public Company()

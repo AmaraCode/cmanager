@@ -80,7 +80,9 @@ namespace AmaraCode.CManager.Controllers
                     Phone = model.Phone,
                     State = model.State,
                     Zip = model.Zip,
-                    Website = model.Website
+                    Website = model.Website,
+                    Enabled = model.Enabled,
+                    OutOfBusiness = model.OutOfBusiness
                 };
 
                 _service.SaveCompany(company);
@@ -141,7 +143,9 @@ namespace AmaraCode.CManager.Controllers
                     Phone = model.Phone,
                     State = model.State,
                     Zip = model.Zip,
-                    Website = model.Website
+                    Website = model.Website,
+                    Enabled = model.Enabled,
+                    OutOfBusiness = model.OutOfBusiness
                 };
 
                 _service.EditCompany(company);

@@ -12,7 +12,7 @@ namespace AmaraCode.CManager.Infrastructure
         Conversation GetConversation(Guid conversationID);
         Task<Conversation> SaveConversationAsync(Conversation conversation);
         Task<Conversation> EditConversationAsync(Conversation conversation);
-        void DeleteConversation(Guid conversationID);
+        void DeleteConversationAsync(Guid conversationID);
 
         IEnumerable<Conversation> GetConversations(Guid? companyID);
         IEnumerable<Conversation> GetConversations();

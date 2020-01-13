@@ -38,7 +38,7 @@ namespace AmaraCode.CManager.Infrastructure
         {
             return from c in DataContext.Companies.Values
                          where c.Enabled == enabled
-                         orderby c.City, c.Phone
+                         orderby c.City, c.CompanyName
                          select c;
         }
 
@@ -65,6 +65,7 @@ namespace AmaraCode.CManager.Infrastructure
         public async Task<Company> SaveCompanyAsync(Company company)
         {
             company.ID = Guid.NewGuid();
+            company.Created = DateTime.Now;
             DataContext.Companies.Add(company.ID, company);
 
             var x = await SaveCompanyFile();

@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace AmaraCode.CManager.Models
 {
-    public class ConversationEditViewModel
+    public class ConversationCreateViewModel
     {
-
-
         public Guid ID { get; set; }
+
+        
         public string Name { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
@@ -18,7 +19,6 @@ namespace AmaraCode.CManager.Models
         public Guid CompanyID { get; set; }
         public DateTime Created { get; set; }
         public string CompanyName { get; set; }
-        public string ReturnURL { get; set; }
         public string ReturnUrl { get; set; }
 
     }

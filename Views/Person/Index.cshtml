@@ -1,0 +1,41 @@
+﻿@model IEnumerable<PersonIndexViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>People</h1>
+
+
+<table class="table table-striped table-hover table-sm">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Company</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Email</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+
+    @foreach (PersonIndexViewModel person in @Model)
+    {
+        <tr>
+            <td nowrap>@person.Name</td>
+            <td nowrap>@person.CompanyName</td>
+            <td nowrap><a href="skype:@person.Phone?call">@person.Phone</a></td>
+            <td nowrap><a href="mailto:@person.Email">@person.Email</a></td>
+            <td nowrap>
+                <form asp-controller="conversation" asp-action="createfromexisting" method="get">
+                    <input type="hidden" value="@person.Name" name="Name" />
+                    <input type="hidden" value="@person.CompanyName" name="CompanyName" />
+                    <input type="hidden" value="@person.CompanyID" name="CompanyID" />
+                    <input type="hidden" value="@person.Phone" name="Phone" />
+                    <input type="hidden" value="@person.Email" name="Email" />
+                    <input type="hidden" value="@ViewContext.HttpContext.Request.PathAndQuery()" name="ReturnURL" />
+                    <button title="Create New Conversation for this Person" type="submit"><i class="fas fa-address-card"></i></button>
+                </form>            
+            </td>
+        </tr>
+    }
+</table>

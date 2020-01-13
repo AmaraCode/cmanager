@@ -26,13 +26,90 @@ namespace AmaraCode.CManager.AppService
         }
 
 
+        /*
+        public ConversationCreateViewModel CreateFromExisting(Guid conversationID)
+        {
+
+            //find the existing conversation
+            var conversation = _repo.GetConversation(conversationID);
+            if (conversation == null)
+            {
+                throw new KeyNotFoundException(nameof(conversationID));
+            }
+
+
+            //populate the new viewmodel to send to the view
+            var model = new ConversationCreateViewModel
+            {
+                Name = conversation.Name,
+                Email = conversation.Email,
+                Phone = conversation.Phone,
+                CompanyID = conversation.CompanyID,
+                CompanyName = DataContext.Companies[conversation.CompanyID].CompanyName,
+            };
+
+            return model;
+
+        }*/
+
+        public ConversationCreateViewModel Create(Guid companyID)
+        {
+            var company = DataContext.Companies[companyID];
+            if (company == null)
+            {
+                throw new ArgumentException($"Company {companyID} could not be found.");
+            }
+
+            var model = new ConversationCreateViewModel
+            {
+                CompanyID = company.ID,
+                CompanyName = company.CompanyName,
+            };
+
+            return model;
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public ConversationCreateViewModel Create(ConversationCreateViewModel model)
+        {
+
+            //create a new converstation objec to send to repository
+            var conversation = new Conversation()
+            {
+                CompanyID = model.CompanyID,
+                CallBack = model.CallBack,
+                Discussion = model.Discussion,
+                Email = model.Email,
+                Name = model.Name,
+                Phone = model.Phone
+
+            };
+
+            //send converstation and get back convesation
+            var result = _repo.SaveConversationAsync(conversation).Result;
+
+
+            //upate a few fields and send back up the stack
+            model.ID = result.ID;
+            model.Created = result.Created;
+
+            return model;
+
+        }
+
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="conversationID"></param>
         public void Delete(Guid conversationID)
         {
-            _repo.DeleteConversation(conversationID);
+            _repo.DeleteConversationAsync(conversationID);
         }
 
 

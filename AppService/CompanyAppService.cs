@@ -70,7 +70,9 @@ namespace AmaraCode.CManager.AppService
                     Phone = company.Phone,
                     State = company.State,
                     Website = company.Website,
-                    Zip = company.Zip
+                    Zip = company.Zip,
+                    Enabled = company.Enabled,
+                    OutOfBusiness = company.OutOfBusiness
                 };
 
                 return model;
