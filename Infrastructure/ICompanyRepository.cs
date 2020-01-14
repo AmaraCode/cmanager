@@ -13,11 +13,14 @@ namespace AmaraCode.CManager.Infrastructure
         Company GetCompany(string name);
 
         IEnumerable<Company> GetCompanies(bool enabled = true);
+        IEnumerable<Company> GetImportantCompanies();
+
         //Conversation GetConversation(Guid id);
         Task<Company> SaveCompanyAsync(Company company);
         //Task<Conversation> SaveConversationAsync(Conversation conversation);
         Task<Company> EditCompanyAsync(Company company);
         void DeleteCompany(Guid id);
+
 
     }
 }

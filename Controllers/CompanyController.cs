@@ -40,9 +40,9 @@ namespace AmaraCode.CManager.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IActionResult List()
+        public IActionResult Important()
         {
-            return View(_service.CompanyIndex());
+            return View(_service.CompanyImportant());
         }
 
 
@@ -51,10 +51,12 @@ namespace AmaraCode.CManager.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult Create(string returnUrl)
         {
             // create empty object and send to view
-            return View(new CompanyCreateViewModel());
+            var model = new CompanyCreateViewModel();
+            model.ReturnUrl = returnUrl;
+            return View(model);
         }
 
 
@@ -82,13 +84,14 @@ namespace AmaraCode.CManager.Controllers
                     Zip = model.Zip,
                     Website = model.Website,
                     Enabled = model.Enabled,
-                    OutOfBusiness = model.OutOfBusiness
+                    OutOfBusiness = model.OutOfBusiness,
+                    Notes = model.Notes
                 };
 
                 _service.SaveCompany(company);
 
                 TempData["message"] = "Company Created";
-                return RedirectToAction("List");
+                return Redirect(model.ReturnUrl);
             }
             else
             {
@@ -104,9 +107,11 @@ namespace AmaraCode.CManager.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public IActionResult Edit(Guid id)
+        public IActionResult Edit(Guid id, string returnUrl)
         {
             CompanyCreateViewModel model = _service.GetCompany(id);
+            model.ReturnUrl = returnUrl; 
+
             if (model != null)
             {
                 return View(model);
@@ -114,7 +119,7 @@ namespace AmaraCode.CManager.Controllers
             else
             {
                 ModelState.AddModelError("Error", "Error getting company.");
-                return View("List");
+                return Redirect(returnUrl);
             }
 
         }
@@ -145,13 +150,14 @@ namespace AmaraCode.CManager.Controllers
                     Zip = model.Zip,
                     Website = model.Website,
                     Enabled = model.Enabled,
-                    OutOfBusiness = model.OutOfBusiness
+                    OutOfBusiness = model.OutOfBusiness,
+                    Notes = model.Notes
                 };
 
                 _service.EditCompany(company);
 
                 TempData["message"] = "Company Edited";
-                return RedirectToAction("List");
+                return Redirect(model.ReturnUrl);
             }
             else
             {
@@ -167,16 +173,18 @@ namespace AmaraCode.CManager.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public IActionResult Delete(Guid id)
+        public IActionResult Delete(Guid id, string returnUrl)
         {
             var model = _service.GetCompany(id);
+            model.ReturnUrl = returnUrl;
+
             if (model != null)
             {
                 return View(model);
             }
             else
             {
-                return View("List");
+                return View("Index");
             }
         }
 
@@ -189,11 +197,11 @@ namespace AmaraCode.CManager.Controllers
         /// <returns></returns>
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public IActionResult DeleteConfirmed (Guid id)
+        public IActionResult DeleteConfirmed (Guid id, string returnUrl)
         {
             TempData["message"] = "Company Removed";
             _service.DeleteCompany(id);
-            return RedirectToAction("List");
+            return Redirect(returnUrl);
         }
     }
 

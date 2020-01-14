@@ -20,7 +20,7 @@ namespace AmaraCode.CManager.Models
         public bool Enabled { get; set; } = true;
         public bool OutOfBusiness { get; set; } = false;
 
-
+        public string Notes { get; set; }
 
         public Company()
         {

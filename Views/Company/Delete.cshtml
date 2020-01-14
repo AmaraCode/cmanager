@@ -9,6 +9,7 @@ You must confirm by pressing the button below,else cancel.
 <br />
 <form asp-action="DeleteConfirmed" method="post">
     <input type="hidden" name="id" value="@Model.ID" />
+    <input type="hidden" name="ReturnUrl" value="@Model.ReturnUrl" />
     <button class="btn btn-danger" type="submit">Delete Company</button>
 </form>
 

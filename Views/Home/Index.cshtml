@@ -3,10 +3,19 @@
 <h1>AmaraCode Conversation Manager</h1>
 
 
+
+
+<div class="alert alert-primary" role="alert">
+    There are @Model.ImportantCompanyCount companies.
+    @if (Model.ImportantCompanyCount > 0)
+    {<a asp-controller="company" asp-action="Important">View Important Companies</a>}
+</div>
+
+
 <div class="alert alert-primary" role="alert">
     There are @Model.CompanyCount companies.
     @if (Model.CompanyCount > 0)
-    {<a asp-controller="company" asp-action="list">View All Companies</a>}
+    {<a asp-controller="company" asp-action="Index">View All Companies</a>}
 </div>
 
 

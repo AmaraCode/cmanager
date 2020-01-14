@@ -115,9 +115,17 @@ namespace AmaraCode.CManager.Infrastructure
         }
 
 
-       
-
-       
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Company> GetImportantCompanies()
+        {
+            return from c in DataContext.Companies.Values
+                   where c.Important == true && c.Enabled == true
+                   orderby c.City, c.CompanyName
+                   select c;
+        }
     }
 
 }

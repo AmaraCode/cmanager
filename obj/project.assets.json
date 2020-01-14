@@ -8208,11 +8208,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\AmaraCode\\projects\\cmanager\\cmanager.csproj",
+      "projectUniqueName": "C:\\AmaraCode\\projects\\cmanager\\cmanager.csproj",
       "projectName": "AmaraCode.CManager",
-      "projectPath": "c:\\AmaraCode\\projects\\cmanager\\cmanager.csproj",
+      "projectPath": "C:\\AmaraCode\\projects\\cmanager\\cmanager.csproj",
       "packagesPath": "C:\\Users\\Scott\\.nuget\\packages\\",
-      "outputPath": "c:\\AmaraCode\\projects\\cmanager\\obj\\",
+      "outputPath": "C:\\AmaraCode\\projects\\cmanager\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -8228,7 +8228,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://packages.xenko.com/nuget": {}
       },
       "frameworks": {
         "netcoreapp3.1": {

@@ -10,9 +10,8 @@ namespace AmaraCode.CManager.Models
     {
 
         public Guid ID { get; set; }
+        
         [Required]
-
-        [UIHint("Company Name")]
         public string CompanyName { get; set; }
 
         public string Address { get; set; }
@@ -28,6 +27,8 @@ namespace AmaraCode.CManager.Models
         public bool Important { get; set; }
         public bool Enabled { get; set; }
         public bool OutOfBusiness { get; set; }
+        public string Notes { get; set; }
+        public string ReturnUrl { get; set; }
 
 
     }

@@ -60,10 +60,12 @@ namespace AmaraCode.CManager.AppService
 
 
             //create the viewmodel to return from this method
+            //TODO make conversation count show only for companies that are enabled.
             var model = new HomeIndexViewModel
             {
-                CompanyCount = DataContext.Companies.Count,
+                CompanyCount = DataContext.Companies.Values.Where(x => x.Enabled == true).Count(),
                 ConversationCount = DataContext.Conversations.Count,
+                ImportantCompanyCount = DataContext.Companies.Values.Where(x => x.Important == true && x.Enabled == true).Count(),
                 LatestConversations = conversations10,
                 WaitingCallBack = conversationsWaitingCallBack
             };

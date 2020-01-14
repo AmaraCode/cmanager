@@ -32,6 +32,20 @@ namespace AmaraCode.CManager.AppService
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Company> CompanyImportant()
+        {
+            //Get all companyes that are Enabled
+            var result = _repo.GetImportantCompanies();
+            return result;
+        }
+
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -72,7 +86,9 @@ namespace AmaraCode.CManager.AppService
                     Website = company.Website,
                     Zip = company.Zip,
                     Enabled = company.Enabled,
-                    OutOfBusiness = company.OutOfBusiness
+                    OutOfBusiness = company.OutOfBusiness,
+                    Notes = company.Notes
+
                 };
 
                 return model;
