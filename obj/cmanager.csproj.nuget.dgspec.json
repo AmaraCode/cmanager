@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\AmaraCode\\projects\\cmanager\\cmanager.csproj": {}
+    "c:\\AmaraCode\\projects\\src\\cmanager\\cmanager.csproj": {}
   },
   "projects": {
-    "C:\\AmaraCode\\projects\\cmanager\\cmanager.csproj": {
+    "c:\\AmaraCode\\projects\\src\\cmanager\\cmanager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\AmaraCode\\projects\\cmanager\\cmanager.csproj",
+        "projectUniqueName": "c:\\AmaraCode\\projects\\src\\cmanager\\cmanager.csproj",
         "projectName": "AmaraCode.CManager",
-        "projectPath": "C:\\AmaraCode\\projects\\cmanager\\cmanager.csproj",
+        "projectPath": "c:\\AmaraCode\\projects\\src\\cmanager\\cmanager.csproj",
         "packagesPath": "C:\\Users\\Scott\\.nuget\\packages\\",
-        "outputPath": "C:\\AmaraCode\\projects\\cmanager\\obj\\",
+        "outputPath": "c:\\AmaraCode\\projects\\src\\cmanager\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -87,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
