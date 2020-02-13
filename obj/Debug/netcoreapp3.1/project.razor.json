@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\AmaraCode\\projects\\cmanager\\cmanager.csproj",
+  "FilePath": "c:\\AmaraCode\\projects\\src\\cmanager\\cmanager.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -20498,46 +20498,86 @@
     ],
     "CSharpLanguageVersion": 800
   },
-  "RootNamespace": "cmanager",
+  "RootNamespace": "AmaraCode.CManager",
   "Documents": [
     {
-      "FilePath": "c:\\AmaraCode\\projects\\cmanager\\Views\\Shared\\Error.cshtml",
-      "TargetPath": "Views\\Shared\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\AmaraCode\\projects\\cmanager\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\AmaraCode\\projects\\cmanager\\Views\\Company\\index.cshtml",
-      "TargetPath": "Views\\Company\\index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\AmaraCode\\projects\\cmanager\\Views\\Home\\Privacy.cshtml",
-      "TargetPath": "Views\\Home\\Privacy.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\AmaraCode\\projects\\cmanager\\Views\\Shared\\_Layout.cshtml",
+      "FilePath": "c:\\AmaraCode\\projects\\src\\cmanager\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\AmaraCode\\projects\\cmanager\\Views\\_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FilePath": "c:\\AmaraCode\\projects\\src\\cmanager\\Views\\Company\\Delete.cshtml",
+      "TargetPath": "Views\\Company\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\AmaraCode\\projects\\cmanager\\Views\\Home\\Index.cshtml",
+      "FilePath": "c:\\AmaraCode\\projects\\src\\cmanager\\Views\\Shared\\Error.cshtml",
+      "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\AmaraCode\\projects\\src\\cmanager\\Views\\Company\\important.cshtml",
+      "TargetPath": "Views\\Company\\important.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\AmaraCode\\projects\\src\\cmanager\\Views\\_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\AmaraCode\\projects\\src\\cmanager\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\AmaraCode\\projects\\cmanager\\Views\\_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FilePath": "c:\\AmaraCode\\projects\\src\\cmanager\\Views\\Conversation\\Create.cshtml",
+      "TargetPath": "Views\\Conversation\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\AmaraCode\\projects\\src\\cmanager\\Views\\Home\\Privacy.cshtml",
+      "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\AmaraCode\\projects\\src\\cmanager\\Views\\Company\\Create.cshtml",
+      "TargetPath": "Views\\Company\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\AmaraCode\\projects\\src\\cmanager\\Views\\Conversation\\Edit.cshtml",
+      "TargetPath": "Views\\Conversation\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\AmaraCode\\projects\\src\\cmanager\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\AmaraCode\\projects\\src\\cmanager\\Views\\Conversation\\List.cshtml",
+      "TargetPath": "Views\\Conversation\\List.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\AmaraCode\\projects\\src\\cmanager\\Views\\Company\\index.cshtml",
+      "TargetPath": "Views\\Company\\index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\AmaraCode\\projects\\src\\cmanager\\Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\AmaraCode\\projects\\src\\cmanager\\Views\\Company\\Edit.cshtml",
+      "TargetPath": "Views\\Company\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\AmaraCode\\projects\\src\\cmanager\\Views\\Person\\Index.cshtml",
+      "TargetPath": "Views\\Person\\Index.cshtml",
       "FileKind": "mvc"
     }
   ],

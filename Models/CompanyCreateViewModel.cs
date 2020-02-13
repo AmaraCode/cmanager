@@ -25,7 +25,7 @@ namespace AmaraCode.CManager.Models
         public string Phone { get; set; }
         public string Website { get; set; }
         public bool Important { get; set; }
-        public bool Enabled { get; set; }
+        public bool Enabled { get; set; } 
         public bool OutOfBusiness { get; set; }
         public string Notes { get; set; }
         public string ReturnUrl { get; set; }

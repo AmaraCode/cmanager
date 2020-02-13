@@ -55,6 +55,8 @@ namespace AmaraCode.CManager.Controllers
         {
             // create empty object and send to view
             var model = new CompanyCreateViewModel();
+            model.Enabled = true;
+
             model.ReturnUrl = returnUrl;
             return View(model);
         }
